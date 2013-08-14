@@ -7,7 +7,7 @@ autopublish
 insecure
 preserve-inputs
 coffeescript
-accounts-ui
 accounts-twitter
+accounts-ui
 less
 spiderable

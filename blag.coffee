@@ -80,7 +80,7 @@ PostsHelper = {
 
   validateCreate: (post)->
     validation = this.validateBase(post)
-    validation.errors['url'] = "Sorry but this url is already in use. Please change the url" if post.url != '' and !isNewUrl(post.url)
+    validation.errors['url'] = "Sorry but this url is already in use. Please change the url" if post.url != '' and !this.isNewUrl(post.url)
     return validation
 
   validateUpdate: (post)->
@@ -224,7 +224,7 @@ if Meteor.isClient
   createPost = ->
     if isAdminUser()
       postData = postDataFromForm()
-      validation = validateCreate(postData)
+      validation = PostsHelper.validateCreate(postData)
       if validation.ok()
         Posts.insert(postData)
         goto(postData.url)
