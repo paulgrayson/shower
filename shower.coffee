@@ -19,6 +19,7 @@ POSTS = [
 ]
 
 
+# Very simple router
 RouteHelper = {
   calcRoute: ->
     path = window.location.href.split('/')[3..-1]
@@ -49,9 +50,6 @@ PostsHelper = {
 
   visible: ->
     return Posts.find({visible: true}, {created_at: 1, name: 1})
-
-  thisPost: (that)->
-    return Posts.findOne(that._id)
 
   isNewUrl: (url)->
     Posts.find({url: url}).count() == 0
@@ -186,7 +184,8 @@ if Meteor.isClient
       Posts.update(this._id, {$set: {visible: false}})
 
     showPost: ->
-      if PostsHelper.isValid(PostsHelper.thisPost(this))
+      post = Posts.findOne(this._id)
+      if PostsHelper.isValid(post)
         Posts.update(this._id, {$set: {visible: true}})
       else
         window.alert("Sorry that post cannot be made visible because it is not valid")
