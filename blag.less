@@ -1,0 +1,189 @@
+/* CSS declarations go here */
+
+@pad: 20px;
+
+* {
+  padding: 0;
+  margin: 0;
+  font-family: Helvetica;
+  line-height: 1.3;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+h1, h2, h3, h4, h5 {
+  font-weight: normal;
+  padding-top: @pad;
+  padding-bottom: @pad/2;
+}
+
+ol, ul {
+  list-style-position: outside;
+  padding-left: @pad*1.5;
+  padding-right: @pad;
+}
+
+blockquote {
+  padding-left: @pad;
+  padding-right: @pad;
+  font-style: italic;
+}
+
+li {
+  padding-bottom: @pad/2;
+}
+
+body {
+  padding-top: 5*@pad;
+  background-color: #f2f2f2;
+}
+
+h1, h2, .logo {
+  color: #0A91E2;
+}
+
+h1 {
+  font-size: 180%;
+}
+
+h2 {
+  font-size: 120%;
+}
+
+.page-size {
+  width: 999px;
+}
+
+.page-margin {
+  margin: 0 auto;
+}
+
+.header-wrapper {
+  background-color: white;
+  box-shadow: 0 0 10px lightgray;
+}
+
+.footer {
+  padding-top: @pad*4;
+  padding-bottom: @pad;
+  padding-left: @pad;
+  padding-right: @pad;
+  font-size: small;
+}
+
+.fixed-top {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  z-index: 1000;
+}
+
+.logo {
+  font-size: 247%;
+}
+
+.container, .row, .footer {
+  clear: both;
+  padding-top: @pad;
+  padding-bottom: @pad;
+}
+
+.header {
+  .page-size;
+  .page-margin;
+  padding-top: @pad;
+  padding-bottom: @pad/2;
+}
+
+.header > * {
+  padding-left: @pad;
+  padding-right: @pad;
+}
+
+button {
+  padding: 4px 8px;
+  background-color: #3a3c3c;
+  border: none;
+  border-radius: 4px;
+  font-size: small;
+  color: white;
+  cursor: pointer;
+  font-weight: normal;
+  box-shadow: 0;
+  opacity: 0.8;
+}
+
+button:hover {
+  opacity: 1;
+}
+
+.danger {
+  background-color: red;
+  color: white;
+}
+
+.warning {
+  background-color: orange;
+  color: white;
+}
+
+.success {
+  background-color: green;
+}
+
+.row + .row {
+  margin-top: @pad;
+}
+
+.row {
+  padding: 0 @pad @pad;
+}
+
+.item {
+  background-color: white;
+}
+
+p, blockquote {
+  padding-bottom: @pad;
+}
+
+.page > h1, .page > h2 {
+  padding-left: @pad;
+}
+
+.page {
+  .page-size;
+  .page-margin;
+}
+
+.post-url {
+  font-size: small;
+  font-color: lightgray;
+  padding-bottom: @pad*2;
+}
+
+.col, .col-2, .col-3, .col-4, .col-5 { float: left; }
+
+.col { width: 20%; }
+
+.col-2 { width: 40%; }
+
+.col-3 { width: 60%; }
+
+.col-4 { width: 80%; }
+
+.col-5 { width: 100%; }
+
+.actions {
+  padding-top: @pad;
+  padding-bottom: @pad;
+}
+

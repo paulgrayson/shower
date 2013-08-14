@@ -1,0 +1,152 @@
+<head>
+  <title>blag</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+  {{> header}}
+  <div class="page">
+    {{> index}}
+    {{> show}}
+    {{> admin}}
+    {{> create}}
+    {{> edit}}
+    {{> footer}}
+  </div>
+</body>
+
+<template name="header">
+  <div class="header-wrapper fixed-top">
+    <div id="header" class="header page-size page-margin">
+      <a href="/" id="blog-name" class="logo">{{blogName}}</a>
+    </div>
+  </div>
+</template>
+
+<template name="footer">
+  <div id="footer" class="footer">
+    {{loginButtons}}
+    {{#if admin}} | <a href="admin" class="admin-link">Admin</a>{{/if}}
+  </div>
+</template>
+
+<template name="index">
+  {{#if isCurrentPage}}
+    {{#each posts}}
+      <div class="row item col-3">
+        {{> postSummary}}
+      </div>
+    {{/each}}
+    <div style="clear: both"/>
+  {{/if}}
+</template>
+
+<template name="show">
+  {{#if isCurrentPage}}
+    <div class="row item col-3">
+      <h1>{{post.name}}</h1>
+      <div>
+        {{{post.body}}}
+      </div>
+    </div>
+  {{/if}}
+</template>
+
+<template name="create">
+  {{#if isCurrentPage}}
+    <div id="page-create" class="page">
+      <div class="row col-3">
+        {{#with post}}
+          {{> postForm}}
+        {{/with}}
+      </div>
+    </div>
+  {{/if}}
+</template>
+
+<template name="edit">
+  {{#if isCurrentPage}}
+    <div id="page-edit" class="page row col-3">
+      {{#with post}}
+        {{> postForm}}
+      {{/with}}
+    </div>
+  {{/if}}
+</template>
+
+<template name="postForm">
+  <div class="field">
+    <h3>Name:</h3>
+    <input type="textfield" cols="90" class="col-4" name="name" id="field-name" value="{{name}}"/>
+  </div>
+  <div class="field">
+    <h3>URL:</h3>
+    <input type="textfield" cols="90" class="col-4" name="url" id="field-url" value="{{url}}"/>
+  </div>
+  <div class="field">
+    <h3>Body:</h3>
+    <textarea rows="20" cols="90" class="col-4" name="url" id="field-body">{{body}}</textarea>
+  </div>
+  <div class="actions col-4">
+    <button class="save-action danger">Save</button>
+    <button class="discard-action warning">Discard</button>
+  </div>
+</template>
+
+<template name="admin">
+  {{#if isCurrentPage}}
+    <div id="page-show" class="page">
+      <h1>Admin</h1>
+      <div class="row">
+        <button class="add-action">+ Add Post</button>
+      </div>
+      {{#each posts}}
+        <div class="visible-{{visible}} item row col-4">
+          {{> postSummary}}
+          {{> postAdmin}}
+        </div>
+      {{/each}}
+    </div>
+  {{/if}}
+</template>
+
+<template name="postSummary">
+  <div class="postSummary">
+    <h2><a href="{{url}}" class='post-link'>{{name}}</a></h2>
+    <p>{{{summary}}}</p>
+  </div>
+</template>
+
+<template name="postAdmin">
+  <div class="post-url">{{url}}}</div>
+  <button class="edit-action">Edit</button>
+  <button class="delete-action danger">Delete</button> 
+  {{#if visible}}
+    <button class="hide-action warning">Hide</button>
+  {{else}}
+    {{#if isValid}}
+      <button class="show-action warning">Show</button>
+    {{else}}
+      Invalid
+    {{/if}}
+  {{/if}}
+</template>
+
+<template name="editPost">
+  <div class="post-edit">
+    <div>
+      <h2>Title</h2>
+      <input type="textfield" cols="80" name="title"/>
+    </div>
+    <div>
+      <h2>URL</h2>
+      <input type="textfield" cols="80" name="url"/>
+    </div>
+    <div>
+      <h2>Body</h2>
+      <input type="textarea" rows="10" cols="80" name="body"/>
+    </div>
+  </div>
+</template>
+
+
